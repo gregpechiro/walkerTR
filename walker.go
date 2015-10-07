@@ -18,9 +18,8 @@ func Walk(start string) map[string][]string {
 }
 
 type Walker struct {
-	StartDir   string
-	CurrentDir string
-	Stores     map[string][]string
+	StartDir string
+	Stores   map[string][]string
 }
 
 func (w *Walker) Texas(path string, info os.FileInfo, err error) error {
@@ -31,7 +30,6 @@ func (w *Walker) Texas(path string, info os.FileInfo, err error) error {
 		return nil
 	}
 	if info.IsDir() {
-		w.CurrentDir = info.Name()
 		w.Stores[info.Name()] = make([]string, 0)
 		return filepath.SkipDir
 	}
